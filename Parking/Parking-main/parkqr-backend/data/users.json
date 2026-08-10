@@ -1,0 +1,93 @@
+{
+  "vicky": {
+    "username": "vicky",
+    "password": "$2a$10$pn5ivTt2GvOWIK2cL7FXKObuSANTyEo9knlCpkSRstb.eqwxIplUS",
+    "role": "user",
+    "fname": "vignesh",
+    "lname": "g",
+    "email": "vicky345@gmail.com",
+    "phone": "8148374037",
+    "plate": "",
+    "vtype": "car",
+    "display": "vignesh g",
+    "registeredAt": "17/3/2026, 10:12:29 am"
+  },
+  "yeswanth": {
+    "username": "yeswanth",
+    "password": "$2a$10$SuXd8IYxVMFdKBHDmRgAD.bOCfZ6bW9hlw0nYo8Sax2Vt32wV944a",
+    "role": "user",
+    "fname": "yeswanth",
+    "lname": "m",
+    "email": "yyeswanth457@gmail.com",
+    "phone": "8148374037",
+    "plate": "",
+    "vtype": "car",
+    "display": "yeswanth m",
+    "registeredAt": "25/3/2026, 9:41:33 pm"
+  },
+  "fdvfdf": {
+    "username": "fdvfdf",
+    "password": "$2a$10$76/uO5gIj17dx.EdkZxobOM32IZGDd3yw/L/OoOit.Gl1tCEuTFSW",
+    "role": "user",
+    "fname": "nithish",
+    "lname": "rp",
+    "email": "nithish123@gamil.com",
+    "phone": "9856488956",
+    "plate": "",
+    "vtype": "car",
+    "display": "nithish rp",
+    "registeredAt": "24/4/2026, 3:46:55 pm"
+  },
+  "vignesh": {
+    "username": "vignesh",
+    "password": "$2a$10$HuiUsF8PmvdQvbd/zRGo6.8w6j85/zIY.rXuXWXLAXHCrqnObFHfW",
+    "role": "user",
+    "fname": "vignesh",
+    "lname": "s",
+    "email": "vigneshgcse2427@ksrce.ac.in",
+    "phone": "07094842435",
+    "plate": "",
+    "vtype": "car",
+    "display": "vignesh s",
+    "registeredAt": "25/5/2026, 5:55:45 pm"
+  },
+  "vic": {
+    "username": "vic",
+    "password": "$2a$10$wXN41Y0UekSswMDYVgg./OuW6tIx65kIZlpeWceq6zz6U.7v02EvW",
+    "role": "user",
+    "fname": "vicky",
+    "lname": "g",
+    "email": "vickyoffl@gmail.com",
+    "phone": "7094842435",
+    "plate": "ABC 125",
+    "vtype": "car",
+    "display": "vicky g",
+    "registeredAt": "6/8/2026, 3:26:02 pm"
+  },
+  "sonika": {
+    "username": "sonika",
+    "password": "$2a$10$sIEy6N.N9jNAI8BSKGv3PuBMxM3Fo.D4Lkvp6NUiV8PECz0sjaD.u",
+    "role": "user",
+    "fname": "sonikanirmala",
+    "lname": "G",
+    "email": "sonikag5171115@gmail.com",
+    "phone": "8531001508",
+    "plate": "ABC 112",
+    "vtype": "car",
+    "display": "sonikanirmala G",
+    "registeredAt": "6/8/2026, 3:28:23 pm"
+  },
+  "soni": {
+    "username": "soni",
+    "password": "$2a$10$vAa63eTjkheAHIBMyWrUyebBkdo1wT6Oa4vVLDaJNBYX9kPp0Qssu",
+    "role": "user",
+    "fname": "jj",
+    "lname": "n",
+    "email": "sonikagcse2427@ksrce.ac.in",
+    "phone": "8531001508",
+    "plate": "JII899",
+    "vtype": "car",
+    "display": "jj n",
+    "registeredAt": "10/8/2026, 11:42:11 am"
+  }
+}

@@ -1,0 +1,730 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Smart Parking QR System - React</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+<script src="https://rawgit.com/schmich/instascan-builds/master/instascan.min.js"></script>
+<script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+<script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+<script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Syne:wght@600;700;800&display=swap');
+
+:root{
+  --bg:#080d14;--surf:#0f1923;--surf2:#162030;
+  --bdr:#1c2d3f;--accent:#00e5b0;--blue:#3b9eff;
+  --warn:#ff7043;--text:#dff0ea;--muted:#4a6a7a;
+  --green:#00d97e;--red:#ff4560;
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:'Space Mono',monospace;background:var(--bg);color:var(--text);min-height:100vh;}
+
+/* ── AUTH SCREEN ─────────────────────────────────────────── */
+#auth-screen{
+  min-height:100vh;display:flex;flex-direction:column;
+  align-items:center;justify-content:center;
+  padding:24px;background:var(--bg);position:relative;overflow:hidden;
+}
+#auth-screen::before{
+  content:'';position:absolute;inset:0;
+  background-image:linear-gradient(var(--bdr) 1px,transparent 1px),linear-gradient(90deg,var(--bdr) 1px,transparent 1px);
+  background-size:48px 48px;opacity:.4;pointer-events:none;
+}
+#auth-screen::after{
+  content:'';position:absolute;width:600px;height:600px;border-radius:50%;
+  background:radial-gradient(circle,rgba(0,229,176,.07) 0%,transparent 70%);
+  top:50%;left:50%;transform:translate(-50%,-60%);pointer-events:none;
+}
+
+.auth-box{position:relative;z-index:1;width:100%;max-width:420px;}
+
+.auth-logo{
+  font-family:'Syne',sans-serif;font-size:2.4rem;font-weight:800;
+  color:var(--accent);text-align:center;letter-spacing:-.03em;margin-bottom:4px;
+}
+.auth-logo b{color:var(--text);}
+.auth-tag{
+  text-align:center;font-size:.65rem;color:var(--muted);
+  text-transform:uppercase;letter-spacing:.14em;margin-bottom:28px;
+}
+
+/* auth mode switcher */
+.auth-switcher{
+  display:flex;background:var(--surf);border:1px solid var(--bdr);
+  border-radius:10px;padding:4px;gap:4px;margin-bottom:22px;
+}
+.auth-sw-btn{
+  flex:1;padding:9px;border-radius:7px;border:none;
+  font-family:'Syne',sans-serif;font-size:.78rem;font-weight:700;
+  cursor:pointer;background:transparent;color:var(--muted);transition:all .2s;
+}
+.auth-sw-btn.active{background:var(--accent);color:#000;}
+
+/* role tabs (for login only) */
+.role-tabs{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:20px;}
+.role-tab{
+  padding:10px;border-radius:8px;border:1px solid var(--bdr);background:var(--surf2);
+  color:var(--muted);font-family:'Syne',sans-serif;font-size:.75rem;font-weight:700;
+  cursor:pointer;text-align:center;transition:all .2s;
+}
+.role-tab:hover{border-color:var(--accent);color:var(--text);}
+.role-tab.active{border-color:var(--accent);background:rgba(0,229,176,.1);color:var(--accent);}
+.role-icon{display:block;font-size:1.3rem;margin-bottom:3px;}
+
+/* card */
+.auth-card{
+  background:var(--surf);border:1px solid var(--bdr);
+  border-radius:14px;padding:26px;
+}
+.auth-card h2{
+  font-family:'Syne',sans-serif;font-size:.82rem;font-weight:700;
+  color:var(--accent);margin-bottom:18px;letter-spacing:.05em;text-transform:uppercase;
+}
+
+/* form fields */
+.fg{margin-bottom:13px;}
+.fg label{display:block;font-size:.62rem;color:var(--muted);text-transform:uppercase;letter-spacing:.1em;margin-bottom:5px;}
+.fg input,.fg select{
+  width:100%;background:var(--surf2);border:1px solid var(--bdr);
+  color:var(--text);font-family:'Space Mono',monospace;font-size:.82rem;
+  padding:11px 13px;border-radius:8px;outline:none;transition:border-color .2s;
+}
+.fg input:focus,.fg select:focus{border-color:var(--accent);}
+.fg select option{background:var(--surf2);}
+.fg.err input{border-color:var(--red);}
+.field-err{font-size:.65rem;color:var(--red);margin-top:4px;display:none;}
+
+.pw-wrap{position:relative;}
+.pw-wrap input{padding-right:44px;}
+.pw-eye{
+  position:absolute;right:12px;top:50%;transform:translateY(-50%);
+  background:none;border:none;cursor:pointer;color:var(--muted);font-size:.85rem;padding:0;line-height:1;
+}
+.pw-eye:hover{color:var(--accent);}
+
+/* two-col row */
+.frow{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+
+/* alerts */
+.auth-msg{
+  border-radius:7px;padding:9px 13px;font-size:.75rem;margin-bottom:14px;display:none;
+}
+.auth-msg.err{background:rgba(255,69,96,.1);border:1px solid rgba(255,69,96,.4);color:var(--red);line-height:1.6;}
+.auth-msg.ok {background:rgba(0,217,126,.08);border:1px solid rgba(0,217,126,.3);color:var(--green);}
+
+/* submit btn */
+.btn-auth{
+  width:100%;padding:12px;background:var(--accent);color:#000;
+  border:none;border-radius:8px;font-family:'Syne',sans-serif;
+  font-size:.9rem;font-weight:700;cursor:pointer;
+  letter-spacing:.02em;transition:opacity .2s,transform .1s;margin-top:6px;
+}
+.btn-auth:hover{opacity:.87;}
+.btn-auth:active{transform:scale(.97);}
+
+/* ══════════════════════════════════════════════════════════
+   MAIN APP
+══════════════════════════════════════════════════════════ */
+nav{display:flex;align-items:center;padding:14px 24px;background:var(--surf);border-bottom:1px solid var(--bdr);gap:12px;flex-wrap:wrap;}
+.logo{font-family:'Syne',sans-serif;font-size:1.2rem;font-weight:700;color:var(--accent);}
+.logo b{color:var(--text);}
+.nav-user{margin-left:auto;display:flex;align-items:center;gap:12px;}
+.nav-role{font-size:.62rem;color:var(--muted);text-transform:uppercase;letter-spacing:.08em;}
+.nav-name{font-size:.78rem;color:var(--text);font-weight:700;}
+.btn-logout{
+  padding:6px 14px;border-radius:6px;font-size:.7rem;background:transparent;
+  border:1px solid var(--bdr);color:var(--muted);font-family:'Space Mono',monospace;
+  cursor:pointer;transition:all .2s;
+}
+.btn-logout:hover{border-color:var(--red);color:var(--red);}
+
+.tabs{display:flex;gap:4px;}
+.tab{padding:7px 18px;border-radius:6px;font-size:.75rem;cursor:pointer;border:1px solid var(--bdr);background:transparent;color:var(--muted);font-family:'Space Mono',monospace;transition:all .2s;}
+.tab.on{background:var(--accent);color:#000;border-color:var(--accent);font-weight:700;}
+
+.stats{display:flex;background:var(--surf);border-bottom:1px solid var(--bdr);}
+.stat{flex:1;text-align:center;padding:12px 8px;border-right:1px solid var(--bdr);}
+.stat:last-child{border-right:none;}
+.sv{font-family:'Syne',sans-serif;font-size:1.4rem;font-weight:700;}
+.sl{font-size:.6rem;color:var(--muted);text-transform:uppercase;letter-spacing:.08em;margin-top:2px;}
+
+.page{display:none;padding:24px;max-width:920px;margin:0 auto;}
+.page.on{display:block;}
+
+.card{background:var(--surf);border:1px solid var(--bdr);border-radius:12px;padding:22px;margin-bottom:20px;}
+.card-title{font-family:'Syne',sans-serif;font-size:.9rem;font-weight:700;margin-bottom:18px;color:var(--accent);}
+
+.row{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+label{display:block;font-size:.62rem;color:var(--muted);text-transform:uppercase;letter-spacing:.1em;margin-bottom:5px;}
+input:not([type=checkbox]),select{
+  width:100%;background:var(--surf2);border:1px solid var(--bdr);color:var(--text);
+  font-family:'Space Mono',monospace;font-size:.82rem;padding:10px 13px;
+  border-radius:7px;outline:none;transition:border-color .2s;
+}
+input:not([type=checkbox]):focus,select:focus{border-color:var(--accent);}
+select option{background:var(--surf2);}
+
+.btn{display:inline-block;padding:11px 20px;border-radius:7px;font-family:'Syne',sans-serif;font-size:.82rem;font-weight:700;cursor:pointer;border:none;transition:all .15s;letter-spacing:.02em;}
+.btn:active{transform:scale(.97);}
+.btn-g{background:var(--accent);color:#000;width:100%;}
+.btn-g:hover{opacity:.87;}
+.btn-o{background:transparent;border:1px solid var(--bdr);color:var(--muted);}
+.btn-o:hover{border-color:var(--accent);color:var(--accent);}
+.btn-r{background:var(--red);color:#fff;}
+.btn-r:hover{opacity:.87;}
+.btn-b{background:var(--blue);color:#fff;}
+.btn-b:hover{opacity:.87;}
+.brow{display:flex;gap:10px;margin-top:14px;flex-wrap:wrap;}
+
+/* SLOT GRID */
+.sgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(85px,1fr));gap:8px;margin-top:12px;}
+.slot{background:var(--surf2);border:1px solid var(--bdr);border-radius:8px;padding:10px 6px;text-align:center;cursor:pointer;transition:all .2s;}
+.slot.available{border-color:rgba(0,217,126,.3);background:rgba(0,217,126,.04);}
+.slot.occupied{border-color:rgba(255,69,96,.3);background:rgba(255,69,96,.04);}
+.slot.matched{border-color:var(--accent);background:rgba(0,229,176,.09);box-shadow:0 0 0 2px rgba(0,229,176,.15);}
+.slot:hover{border-color:var(--blue);}
+.sid{font-family:'Syne',sans-serif;font-size:.9rem;font-weight:700;}
+.sst{font-size:.55rem;text-transform:uppercase;letter-spacing:.07em;margin-top:3px;}
+.available .sst{color:var(--green);}
+.occupied .sst{color:var(--red);}
+.matched .sst{color:var(--accent);}
+.spl{font-size:.6rem;color:var(--muted);margin-top:3px;}
+
+.logwrap{max-height:220px;overflow-y:auto;}
+.le{display:flex;gap:12px;font-size:.7rem;padding:7px 0;border-bottom:1px solid var(--bdr);}
+.le:last-child{border:none;}
+.lt{color:var(--muted);flex-shrink:0;}
+.ltype{flex-shrink:0;width:60px;font-weight:700;}
+.ltype.ENTRY{color:var(--blue);}
+.ltype.EXIT{color:var(--warn);}
+.ltype.MATCH{color:var(--green);}
+.ltype.FAIL{color:var(--red);}
+.ltype.LOGIN{color:var(--accent);}
+.ltype.REG{color:#b388ff;}
+
+.agrid{display:grid;grid-template-columns:1fr 1fr;gap:20px;}
+.fw{grid-column:1/-1;}
+
+@media(max-width:640px){
+  .agrid{grid-template-columns:1fr;}.fw{grid-column:1;}
+  .row,.frow{grid-template-columns:1fr;}
+  nav{gap:8px;}.tabs,.nav-user{width:100%;}
+  .auth-box{max-width:100%;}
+}
+</style>
+</head>
+<body>
+<div id="root"></div>
+
+<script type="text/babel">
+// React Components
+const SlotGrid = ({ slots, highlight, onSlotClick }) => {
+  return (
+    <div className="sgrid">
+      {Object.entries(slots).map(([id, d]) => (
+        <div
+          key={id}
+          className={`slot ${id === highlight ? 'matched' : d.status}`}
+          onClick={() => d.qr && onSlotClick(d.qr)}
+        >
+          <div className="sid">{id}</div>
+          <div className="sst">{id === highlight ? 'MATCHED' : d.status.toUpperCase()}</div>
+          <div className="spl">{d.plate || '—'}</div>
+        </div>
+      ))}
+    </div>
+  );
+};
+
+const AuthScreen = ({ onLogin }) => {
+  const [mode, setMode] = React.useState('login');
+  const [role, setRole] = React.useState('user');
+  const [formData, setFormData] = React.useState({
+    username: '', password: '', fname: '', lname: '', email: '', phone: '', plate: ''
+  });
+  const [errors, setErrors] = React.useState({});
+
+  const handleInputChange = (e) => {
+    setFormData({...formData, [e.target.name]: e.target.value});
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (mode === 'login') {
+      // Call existing login function
+      doLogin();
+    } else {
+      // Call existing register function
+      doRegister();
+    }
+  };
+
+  return (
+    <div id="auth-screen">
+      <div className="auth-box">
+        <div className="auth-logo">ParkQR</div>
+        <div className="auth-tag">Smart Parking System</div>
+        
+        <div className="auth-switcher">
+          <button className={`auth-sw-btn ${mode === 'login' ? 'active' : ''}`} onClick={() => setMode('login')}>Login</button>
+          <button className={`auth-sw-btn ${mode === 'register' ? 'active' : ''}`} onClick={() => setMode('register')}>Register</button>
+        </div>
+
+        {mode === 'login' && (
+          <div className="role-tabs">
+            <button className={`role-tab ${role === 'user' ? 'active' : ''}`} onClick={() => setRole('user')}>
+              <div className="role-icon">👤</div>
+              <div>User</div>
+            </button>
+            <button className={`role-tab ${role === 'admin' ? 'active' : ''}`} onClick={() => setRole('admin')}>
+              <div className="role-icon">⚙️</div>
+              <div>Admin</div>
+            </button>
+          </div>
+        )}
+
+        <form onSubmit={handleSubmit}>
+          <div className="auth-card">
+            <h2>{mode === 'login' ? 'Welcome Back' : 'Create Account'}</h2>
+            
+            {mode === 'register' && (
+              <div className="frow">
+                <div className="fg">
+                  <label>First Name</label>
+                  <input type="text" name="fname" value={formData.fname} onChange={handleInputChange} required />
+                </div>
+                <div className="fg">
+                  <label>Last Name</label>
+                  <input type="text" name="lname" value={formData.lname} onChange={handleInputChange} required />
+                </div>
+              </div>
+            )}
+
+            <div className="fg">
+              <label>Username</label>
+              <input type="text" name="username" value={formData.username} onChange={handleInputChange} required />
+            </div>
+
+            <div className="fg">
+              <label>Password</label>
+              <div className="pw-wrap">
+                <input type="password" name="password" value={formData.password} onChange={handleInputChange} required />
+                <button type="button" className="pw-eye">👁️</button>
+              </div>
+            </div>
+
+            {mode === 'register' && (
+              <>
+                <div className="fg">
+                  <label>Email</label>
+                  <input type="email" name="email" value={formData.email} onChange={handleInputChange} required />
+                </div>
+                <div className="fg">
+                  <label>Phone</label>
+                  <input type="tel" name="phone" value={formData.phone} onChange={handleInputChange} required />
+                </div>
+                <div className="fg">
+                  <label>Vehicle Plate</label>
+                  <input type="text" name="plate" value={formData.plate} onChange={handleInputChange} placeholder="e.g. ABC-123" />
+                </div>
+              </>
+            )}
+
+            <button type="submit" className="btn-auth">
+              {mode === 'login' ? 'Login' : 'Register'}
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  );
+};
+
+const MainApp = () => {
+  const [currentPage, setCurrentPage] = React.useState('book');
+  const [slots, setSlots] = React.useState({});
+  const [logs, setLogs] = React.useState([]);
+
+  React.useEffect(() => {
+    setSlots(getSlots());
+    setLogs(getLogs());
+  }, []);
+
+  const handleSlotClick = (qr) => {
+    // For now, we'll use a hidden input to interface with existing code
+    const hiddenInput = document.createElement('input');
+    hiddenInput.type = 'text';
+    hiddenInput.value = qr;
+    hiddenInput.id = 'a-scan';
+    document.body.appendChild(hiddenInput);
+    matchQR();
+    document.body.removeChild(hiddenInput);
+  };
+
+  return (
+    <div id="app">
+      <nav>
+        <div className="logo">ParkQR</div>
+        <div className="nav-user">
+          <div className="nav-name">{window.currentUser?.fname} {window.currentUser?.lname}</div>
+          <div className="nav-role">{window.currentRole?.toUpperCase()}</div>
+          <button className="btn-logout" onClick={doLogout}>Logout</button>
+        </div>
+      </nav>
+
+      <div className="tabs">
+        <button className={`tab ${currentPage === 'book' ? 'on' : ''}`} onClick={() => setCurrentPage('book')}>Book Slot</button>
+        <button className={`tab ${currentPage === 'scan' ? 'on' : ''}`} onClick={() => setCurrentPage('scan')}>Scan QR</button>
+        <button className={`tab ${currentPage === 'history' ? 'on' : ''}`} onClick={() => setCurrentPage('history')}>History</button>
+        {window.currentRole === 'admin' && (
+          <button className={`tab ${currentPage === 'admin' ? 'on' : ''}`} onClick={() => setCurrentPage('admin')}>Admin</button>
+        )}
+      </div>
+
+      <div className={`page ${currentPage === 'book' ? 'on' : ''}`}>
+        <div className="card">
+          <div className="card-title">Book a Parking Slot</div>
+          <p>Booking functionality will be implemented here.</p>
+        </div>
+      </div>
+
+      <div className={`page ${currentPage === 'scan' ? 'on' : ''}`}>
+        <div className="card">
+          <div className="card-title">Scan QR Code</div>
+          <p>QR scanning functionality will be implemented here.</p>
+        </div>
+      </div>
+
+      <div className={`page ${currentPage === 'history' ? 'on' : ''}`}>
+        <div className="card">
+          <div className="card-title">Booking History</div>
+          <p>History view will be implemented here.</p>
+        </div>
+      </div>
+
+      {window.currentRole === 'admin' && (
+        <div className={`page ${currentPage === 'admin' ? 'on' : ''}`}>
+          <div className="card">
+            <div className="card-title">Admin Panel</div>
+            <div className="agrid">
+              <div>
+                <div className="card-title" style={{marginTop: '4px', fontSize: '.78rem'}}>Live Slot Map</div>
+                <SlotGrid slots={slots} onSlotClick={handleSlotClick} />
+              </div>
+              <div>
+                <div className="card-title" style={{marginTop: '4px', fontSize: '.78rem'}}>Activity Log</div>
+                <div className="logwrap">
+                  {logs.slice(-10).reverse().map((log, i) => (
+                    <div key={i} className="le">
+                      <div className="lt">{new Date(log.ts).toLocaleTimeString()}</div>
+                      <div className={`ltype ${log.type}`}>{log.type}</div>
+                      <div>{log.msg}</div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
+    </div>
+  );
+};
+
+const App = () => {
+  const [isLoggedIn, setIsLoggedIn] = React.useState(false);
+
+  React.useEffect(() => {
+    // Check if user is already logged in
+    const user = localStorage.getItem('pq_current_user');
+    if (user) {
+      window.currentUser = JSON.parse(user);
+      window.currentRole = localStorage.getItem('pq_current_role');
+      setIsLoggedIn(true);
+    }
+  }, []);
+
+  const handleLogin = () => {
+    setIsLoggedIn(true);
+  };
+
+  const handleLogout = () => {
+    setIsLoggedIn(false);
+  };
+
+  return isLoggedIn ? <MainApp onLogout={handleLogout} /> : <AuthScreen onLogin={handleLogin} />;
+};
+
+// Render the app
+ReactDOM.render(<App />, document.getElementById('root'));
+</script>
+</body>
+</html>
+  // Check admin accounts first
+  if(ADMIN_ACCOUNTS[uname] && ADMIN_ACCOUNTS[uname].password === pass){
+    currentUser = ADMIN_ACCOUNTS[uname];
+    currentRole = 'admin';
+    loginSuccess(uname, currentUser);
+    return;
+  }
+
+  // Check registered users
+  const users = getRegisteredUsers();
+  if(users[uname] && users[uname].password === pass){
+    currentUser = users[uname];
+    currentRole = 'user';
+    loginSuccess(uname, currentUser);
+    return;
+  }
+
+  // Failed
+  document.getElementById('l-err').style.display='block';
+}
+
+function loginSuccess(uname, account){
+  localStorage.setItem('pq_current_user', JSON.stringify(account));
+  localStorage.setItem('pq_current_role', currentRole);
+  addLog('LOGIN', `${account.fname || account.display} signed in as ${currentRole}`);
+  document.getElementById('auth-screen').style.display='none';
+  document.getElementById('app').style.display='block';
+  updateStats();
+  fillSlotSelect();
+  showPage('user');
+}
+
+function doLogout(){
+  currentUser = null;
+  currentRole = null;
+  localStorage.removeItem('pq_current_user');
+  localStorage.removeItem('pq_current_role');
+  document.getElementById('auth-screen').style.display='flex';
+  document.getElementById('app').style.display='none';
+}
+
+// ═══════════════════════════════════════════════════════
+//  STORAGE
+// ═══════════════════════════════════════════════════════
+const TOTAL=60; // slots S01–S60 (range 50 to 60 visible)
+const RATES={car:100,bike:50,truck:150};
+const RATE_LABEL={car:'₹100/hr',bike:'₹50/hr',truck:'₹150/hr'};
+
+function getSlots(){
+  const r = localStorage.getItem('pq_slots');
+  if(!r){
+    // Initialize slots
+    const slots = {};
+    for(let i=1;i<=TOTAL;i++){
+      const id = 'S'+i.toString().padStart(2,'0');
+      slots[id] = {status:'available',plate:null,qr:null};
+    }
+    saveSlots(slots);
+    return slots;
+  }
+  return JSON.parse(r);
+}
+function saveSlots(s){localStorage.setItem('pq_slots',JSON.stringify(s));}
+function getSessions(){const r=localStorage.getItem('pq_sess');return r?JSON.parse(r):{};}
+function saveSessions(s){localStorage.setItem('pq_sess',JSON.stringify(s));}
+function getLogs(){const r=localStorage.getItem('pq_logs');return r?JSON.parse(r):[];}
+function addLog(type,msg){
+  const logs = getLogs();
+  logs.push({type, msg, ts: Date.now()});
+  localStorage.setItem('pq_logs',JSON.stringify(logs.slice(-100))); // Keep last 100
+}
+function clearLogs(){localStorage.removeItem('pq_logs');}
+function todayKey(){return 'pq_rev_'+new Date().toISOString().slice(0,10).replace(/-/g,'_');}
+function getRevenue(key){return parseFloat(localStorage.getItem(key)||'0');}
+function getTodayRevenue(){ return getRevenue(todayKey()); }
+function addRevenue(n){
+  const key = todayKey();
+  const current = getRevenue(key);
+  localStorage.setItem(key, (current + n).toFixed(2));
+  const all = parseFloat(localStorage.getItem('pq_rev_all')||'0');
+  localStorage.setItem('pq_rev_all', (all + n).toFixed(2));
+}
+function getAllRevenue(){ return parseFloat(localStorage.getItem('pq_rev_all')||'0'); }
+function getDailyRevenues(){
+  const revs = {};
+  for(let i=0;i<localStorage.length;i++){
+    const key = localStorage.key(i);
+    if(key.startsWith('pq_rev_') && key !== 'pq_rev_all'){
+      revs[key] = parseFloat(localStorage.getItem(key)||'0');
+    }
+  }
+  return revs;
+}
+
+function makeCode(plate,slot,ts){return btoa('PQ|'+slot+'|'+plate+'|'+ts).replace(/=/g,'');}
+function calcFee(mins,vtype){
+  const hours = Math.ceil(mins/60);
+  return Math.max(20, hours * RATES[vtype]); // Min ₹20
+}
+
+// ═══════════════════════════════════════════════════════
+//  STATS
+// ═══════════════════════════════════════════════════════
+function updateStats(){
+  const slots = getSlots();
+  const occ = Object.values(slots).filter(s=>s.status==='occupied').length;
+  const avail = TOTAL - occ;
+  document.getElementById('st-total').textContent = TOTAL;
+  document.getElementById('st-avail').textContent = avail;
+  document.getElementById('st-occ').textContent = occ;
+  document.getElementById('st-rev').textContent = '₹' + getTodayRevenue();
+  document.getElementById('st-users').textContent = Object.keys(getRegisteredUsers()).length;
+}
+
+// ═══════════════════════════════════════════════════════
+//  SLOT SELECT
+// ═══════════════════════════════════════════════════════
+function fillSlotSelect(){
+  const sel = document.getElementById('u-slot');
+  if(!sel)return;
+  sel.innerHTML = '<option value="">Select available slot...</option>';
+  const slots = getSlots();
+  for(const[id,d] of Object.entries(slots)){
+    if(d.status==='available'){
+      const opt = document.createElement('option');
+      opt.value = id;
+      opt.textContent = `${id} — Available`;
+      sel.appendChild(opt);
+    }
+  }
+}
+
+// ═══════════════════════════════════════════════════════
+//  GENERATE TICKET
+// ═══════════════════════════════════════════════════════
+function generateTicket(){
+  const plate = document.getElementById('u-plate').value.trim();
+  const name = document.getElementById('u-name').value.trim();
+  const phone = document.getElementById('u-phone').value.trim();
+  const slot = document.getElementById('u-slot').value;
+  const vtype = document.getElementById('u-vtype').value;
+
+  if(!plate || !name || !phone || !slot){
+    alert('Please fill all required fields.');
+    return;
+  }
+
+  const ts = Date.now();
+  const code = makeCode(plate, slot, ts);
+  
+  // Generate UPI payment QR code instead of parking QR
+  const upiId = 'yyeswanth457@oksbi';
+  const receiverName = 'ParkQR Parking';
+  const transactionNote = `Parking - Slot ${slot} - ${plate}`;
+  const estimatedAmount = RATES[vtype]; // Hourly rate as initial payment
+  
+  const upiLink = `upi://pay?pa=${upiId}&pn=${encodeURIComponent(receiverName)}&am=${estimatedAmount}&tn=${encodeURIComponent(transactionNote)}`;
+  const qrUrl = `https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=${encodeURIComponent(upiLink)}`;
+
+  // Update slot
+  const slots = getSlots();
+  slots[slot] = {status:'occupied', plate, qr:code};
+  saveSlots(slots);
+
+  // Add session
+  const sess = getSessions();
+  sess[code] = {slot, plate, name, phone, vtype, entryTime:ts};
+  saveSessions(sess);
+
+  // Update UI
+  document.getElementById('ticket').style.display='block';
+  document.getElementById('qr-wrap').innerHTML = `<img src="${qrUrl}" alt="QR Code"/>`;
+  document.getElementById('t-details').innerHTML = `
+    <div class="trow"><span>Slot</span><strong>${slot}</strong></div>
+    <div class="trow"><span>Plate</span><strong>${plate}</strong></div>
+    <div class="trow"><span>Driver</span><strong>${name}</strong></div>
+    <div class="trow"><span>Phone</span><strong>${phone}</strong></div>
+    <div class="trow"><span>Vehicle</span><strong>${vtype.toUpperCase()}</strong></div>
+    <div class="trow"><span>Entry Time</span><strong>${new Date(ts).toLocaleString()}</strong></div>
+    <div class="trow"><span>Rate</span><strong>${RATE_LABEL[vtype]}</strong></div>
+  `;
+  document.getElementById('codestr').textContent = code;
+
+  addLog('ENTRY', `${name} checked in — ${slot} — ${plate}`);
+  updateStats();
+  fillSlotSelect();
+}
+
+function dlQR(){
+  const canvas = document.querySelector('#qr-wrap canvas');
+  if(canvas){
+    const link = document.createElement('a');
+    link.download = 'parking-qr.png';
+    link.href = canvas.toDataURL();
+    link.click();
+  }
+}
+function copyCode(){
+  const code = document.getElementById('codestr').textContent;
+  navigator.clipboard.writeText(code);
+  alert('Code copied to clipboard!');
+}
+function newTicket(){
+  document.getElementById('ticket').style.display='none';
+}
+
+// ═══════════════════════════════════════════════════════
+//  ADMIN — MATCH
+// ═══════════════════════════════════════════════════════
+function matchQR(){
+  const code = document.getElementById('a-scan').value.trim();
+  if(!code){alert('Enter a QR code first.');return;}
+
+  const sess = getSessions();
+  const s = sess[code];
+  if(!s){alert('QR not found. Verify first.');return;}
+
+  const mins = Math.floor((Date.now()-s.entryTime)/60000);
+  const fee = calcFee(mins,s.vtype);
+  const slots = getSlots();
+  slots[s.slot] = {status:'available',plate:null,qr:null};
+  saveSlots(slots);
+  delete sess[code];saveSessions(sess);
+  addRevenue(fee);
+  updateBookingHistoryStatus(code, fee, Date.now());
+  addLog('EXIT', `${s.plate} checked out — ${s.slot} freed — ${Math.floor(mins/60)}h${mins%60}m — ₹${fee}`);
+  document.getElementById('a-scan').value = '';
+  document.getElementById('a-result').style.display = 'none';
+  renderSlotGrid();renderLog();updateStats();fillSlotSelect();renderSlotTimeline(currentSlotFilter);
+  alert(`✓ Check-out complete!\nSlot: ${s.slot} FREE\nDriver: ${s.name}\nDuration: ${Math.floor(mins/60)}h ${mins%60}m\nFee: ₹${fee}`);
+}
+
+// ═══════════════════════════════════════════════════════
+//  ADMIN — SLOT GRID
+// ═══════════════════════════════════════════════════════
+function renderSlotGrid(highlight=null){
+  const grid = document.getElementById('a-grid');
+  if(!grid)return;
+  const slots = getSlots();
+  grid.innerHTML = '';
+  for(const[id,d] of Object.entries(slots)){
+    const div = document.createElement('div');
+    div.className = id===highlight?'slot matched':'slot '+d.status;
+    div.innerHTML = `<div class="sid">${id}</div><div class="sst">${id===highlight?'MATCHED':d.status.toUpperCase()}</div><div class="spl">${d.plate||'—'}</div>`;
+    div.onclick = ()=>{if(d.qr){document.getElementById('a-scan').value=d.qr;matchQR();}};
+    grid.appendChild(div);
+  }
+}
+
+// ─── INIT ────────────────────────────────────────────────
+document.addEventListener('DOMContentLoaded', () => {
+  // Check if already logged in
+  const user = localStorage.getItem('pq_current_user');
+  if(user){
+    currentUser = JSON.parse(user);
+    currentRole = localStorage.getItem('pq_current_role');
+    document.getElementById('auth-screen').style.display='none';
+    document.getElementById('app').style.display='block';
+    updateStats();
+    fillSlotSelect();
+    showPage('user');
+  }
+});
+</script>
+</body>
+</html>

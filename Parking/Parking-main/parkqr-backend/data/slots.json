@@ -1,0 +1,302 @@
+{
+  "S01": {
+    "status": "available",
+    "plate": null,
+    "qr": null
+  },
+  "S02": {
+    "status": "available",
+    "plate": null,
+    "qr": null
+  },
+  "S03": {
+    "status": "available",
+    "plate": null,
+    "qr": null
+  },
+  "S04": {
+    "status": "available",
+    "plate": null,
+    "qr": null
+  },
+  "S05": {
+    "status": "available",
+    "plate": null,
+    "qr": null
+  },
+  "S06": {
+    "status": "occupied",
+    "plate": "ABC 112",
+    "qr": "UFF8UzA2fEFCQyAxMTJ8MTc4NjAxMTE3Nzc2Nw"
+  },
+  "S07": {
+    "status": "available",
+    "plate": null,
+    "qr": null
+  },
+  "S08": {
+    "status": "occupied",
+    "plate": "JII899",
+    "qr": "UFF8UzA4fEpJSTg5OXwxNzg2MzQyMzUxODc2"
+  },
+  "S09": {
+    "status": "available",
+    "plate": null,
+    "qr": null
+  },
+  "S10": {
+    "status": "available",
+    "plate": null,
+    "qr": null
+  },
+  "S11": {
+    "status": "available",
+    "plate": null,
+    "qr": null
+  },
+  "S12": {
+    "status": "occupied",
+    "plate": "ABC 112",
+    "qr": "UFF8UzEyfEFCQyAxMTJ8MTc4NjAxMTEyNDczMg"
+  },
+  "S13": {
+    "status": "available",
+    "plate": null,
+    "qr": null
+  },
+  "S14": {
+    "status": "available",
+    "plate": null,
+    "qr": null
+  },
+  "S15": {
+    "status": "available",
+    "plate": null,
+    "qr": null
+  },
+  "S16": {
+    "status": "available",
+    "plate": null,
+    "qr": null
+  },
+  "S17": {
+    "status": "available",
+    "plate": null,
+    "qr": null
+  },
+  "S18": {
+    "status": "available",
+    "plate": null,
+    "qr": null
+  },
+  "S19": {
+    "status": "available",
+    "plate": null,
+    "qr": null
+  },
+  "S20": {
+    "status": "available",
+    "plate": null,
+    "qr": null
+  },
+  "S21": {
+    "status": "available",
+    "plate": null,
+    "qr": null
+  },
+  "S22": {
+    "status": "available",
+    "plate": null,
+    "qr": null
+  },
+  "S23": {
+    "status": "available",
+    "plate": null,
+    "qr": null
+  },
+  "S24": {
+    "status": "available",
+    "plate": null,
+    "qr": null
+  },
+  "S25": {
+    "status": "available",
+    "plate": null,
+    "qr": null
+  },
+  "S26": {
+    "status": "available",
+    "plate": null,
+    "qr": null
+  },
+  "S27": {
+    "status": "available",
+    "plate": null,
+    "qr": null
+  },
+  "S28": {
+    "status": "available",
+    "plate": null,
+    "qr": null
+  },
+  "S29": {
+    "status": "available",
+    "plate": null,
+    "qr": null
+  },
+  "S30": {
+    "status": "available",
+    "plate": null,
+    "qr": null
+  },
+  "S31": {
+    "status": "available",
+    "plate": null,
+    "qr": null
+  },
+  "S32": {
+    "status": "available",
+    "plate": null,
+    "qr": null
+  },
+  "S33": {
+    "status": "available",
+    "plate": null,
+    "qr": null
+  },
+  "S34": {
+    "status": "available",
+    "plate": null,
+    "qr": null
+  },
+  "S35": {
+    "status": "available",
+    "plate": null,
+    "qr": null
+  },
+  "S36": {
+    "status": "available",
+    "plate": null,
+    "qr": null
+  },
+  "S37": {
+    "status": "available",
+    "plate": null,
+    "qr": null
+  },
+  "S38": {
+    "status": "available",
+    "plate": null,
+    "qr": null
+  },
+  "S39": {
+    "status": "available",
+    "plate": null,
+    "qr": null
+  },
+  "S40": {
+    "status": "available",
+    "plate": null,
+    "qr": null
+  },
+  "S41": {
+    "status": "available",
+    "plate": null,
+    "qr": null
+  },
+  "S42": {
+    "status": "available",
+    "plate": null,
+    "qr": null
+  },
+  "S43": {
+    "status": "available",
+    "plate": null,
+    "qr": null
+  },
+  "S44": {
+    "status": "available",
+    "plate": null,
+    "qr": null
+  },
+  "S45": {
+    "status": "available",
+    "plate": null,
+    "qr": null
+  },
+  "S46": {
+    "status": "available",
+    "plate": null,
+    "qr": null
+  },
+  "S47": {
+    "status": "available",
+    "plate": null,
+    "qr": null
+  },
+  "S48": {
+    "status": "available",
+    "plate": null,
+    "qr": null
+  },
+  "S49": {
+    "status": "available",
+    "plate": null,
+    "qr": null
+  },
+  "S50": {
+    "status": "available",
+    "plate": null,
+    "qr": null
+  },
+  "S51": {
+    "status": "available",
+    "plate": null,
+    "qr": null
+  },
+  "S52": {
+    "status": "available",
+    "plate": null,
+    "qr": null
+  },
+  "S53": {
+    "status": "available",
+    "plate": null,
+    "qr": null
+  },
+  "S54": {
+    "status": "available",
+    "plate": null,
+    "qr": null
+  },
+  "S55": {
+    "status": "available",
+    "plate": null,
+    "qr": null
+  },
+  "S56": {
+    "status": "available",
+    "plate": null,
+    "qr": null
+  },
+  "S57": {
+    "status": "available",
+    "plate": null,
+    "qr": null
+  },
+  "S58": {
+    "status": "available",
+    "plate": null,
+    "qr": null
+  },
+  "S59": {
+    "status": "available",
+    "plate": null,
+    "qr": null
+  },
+  "S60": {
+    "status": "available",
+    "plate": null,
+    "qr": null
+  }
+}

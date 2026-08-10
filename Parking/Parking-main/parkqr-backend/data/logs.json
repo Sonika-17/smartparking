@@ -1,0 +1,632 @@
+[
+  {
+    "type": "ENTRY",
+    "msg": "JII899 → S08 checked in (jj n)",
+    "time": "11:42:31",
+    "ts": 1786342351896
+  },
+  {
+    "type": "REG",
+    "msg": "New user: jj n (@soni, sonikagcse2427@ksrce.ac.in)",
+    "time": "11:42:11",
+    "ts": 1786342331280
+  },
+  {
+    "type": "LOGIN",
+    "msg": "Admin signed in",
+    "time": "15:47:03",
+    "ts": 1786011423014
+  },
+  {
+    "type": "ENTRY",
+    "msg": "ABC 112 → S06 checked in (sonikanirmala G)",
+    "time": "15:42:57",
+    "ts": 1786011177786
+  },
+  {
+    "type": "ENTRY",
+    "msg": "ABC 112 → S12 checked in (sonikanirmala G)",
+    "time": "15:42:04",
+    "ts": 1786011124749
+  },
+  {
+    "type": "LOGIN",
+    "msg": "sonikanirmala G (@sonika) signed in",
+    "time": "15:41:42",
+    "ts": 1786011102598
+  },
+  {
+    "type": "admin",
+    "msg": "Admin cancelled booking for slot S01",
+    "time": "15:41:25",
+    "ts": 1786011085745
+  },
+  {
+    "type": "admin",
+    "msg": "Admin cancelled booking for slot S02",
+    "time": "15:41:20",
+    "ts": 1786011080751
+  },
+  {
+    "type": "admin",
+    "msg": "Admin cancelled booking for slot S03",
+    "time": "15:41:13",
+    "ts": 1786011073812
+  },
+  {
+    "type": "admin",
+    "msg": "Admin cancelled booking for slot S04",
+    "time": "15:41:08",
+    "ts": 1786011068326
+  },
+  {
+    "type": "admin",
+    "msg": "Admin cancelled booking for slot S06",
+    "time": "15:41:02",
+    "ts": 1786011062637
+  },
+  {
+    "type": "admin",
+    "msg": "Admin cancelled booking for slot S11",
+    "time": "15:40:55",
+    "ts": 1786011055980
+  },
+  {
+    "type": "admin",
+    "msg": "Admin cancelled booking for slot S09",
+    "time": "15:40:49",
+    "ts": 1786011049575
+  },
+  {
+    "type": "LOGIN",
+    "msg": "Admin signed in",
+    "time": "15:40:14",
+    "ts": 1786011014305
+  },
+  {
+    "type": "LOGIN",
+    "msg": "sonikanirmala G (@sonika) signed in",
+    "time": "15:37:39",
+    "ts": 1786010859354
+  },
+  {
+    "type": "LOGIN",
+    "msg": "Admin signed in",
+    "time": "15:34:44",
+    "ts": 1786010684108
+  },
+  {
+    "type": "ENTRY",
+    "msg": "ABC 112 → S11 checked in (sonikanirmala G)",
+    "time": "15:30:06",
+    "ts": 1786010406548
+  },
+  {
+    "type": "ENTRY",
+    "msg": "ABC 112 → S09 checked in (sonikanirmala G)",
+    "time": "15:29:31",
+    "ts": 1786010371702
+  },
+  {
+    "type": "LOGIN",
+    "msg": "sonikanirmala G (@sonika) signed in",
+    "time": "15:29:08",
+    "ts": 1786010348267
+  },
+  {
+    "type": "LOGIN",
+    "msg": "sonikanirmala G (@sonika) signed in",
+    "time": "15:29:07",
+    "ts": 1786010347245
+  },
+  {
+    "type": "REG",
+    "msg": "New user: sonikanirmala G (@sonika, sonikag5171115@gmail.com)",
+    "time": "15:28:23",
+    "ts": 1786010303042
+  },
+  {
+    "type": "REG",
+    "msg": "New user: vicky g (@vic, vickyoffl@gmail.com)",
+    "time": "15:26:02",
+    "ts": 1786010162364
+  },
+  {
+    "type": "ENTRY",
+    "msg": "TN 24 AW 0501 → S06 checked in (vignesh s)",
+    "time": "19:58:44",
+    "ts": 1779719324360
+  },
+  {
+    "type": "LOGIN",
+    "msg": "vignesh s (@vignesh) signed in",
+    "time": "19:58:36",
+    "ts": 1779719316848
+  },
+  {
+    "type": "ENTRY",
+    "msg": "TN 24 AW 0501 → S04 checked in (vignesh s)",
+    "time": "19:38:49",
+    "ts": 1779718129732
+  },
+  {
+    "type": "LOGIN",
+    "msg": "vignesh s (@vignesh) signed in",
+    "time": "19:38:39",
+    "ts": 1779718119760
+  },
+  {
+    "type": "ENTRY",
+    "msg": "TN 24 AW 0501 → S03 checked in (vignesh s)",
+    "time": "19:31:11",
+    "ts": 1779717671386
+  },
+  {
+    "type": "ENTRY",
+    "msg": "TN 24 AW 0501 → S02 checked in (vignesh s)",
+    "time": "19:23:19",
+    "ts": 1779717199285
+  },
+  {
+    "type": "LOGIN",
+    "msg": "vignesh s (@vignesh) signed in",
+    "time": "19:23:11",
+    "ts": 1779717191736
+  },
+  {
+    "type": "ENTRY",
+    "msg": "TN 24 AW 0501 → S01 checked in (vignesh s)",
+    "time": "19:17:26",
+    "ts": 1779716846625
+  },
+  {
+    "type": "LOGIN",
+    "msg": "vignesh s (@vignesh) signed in",
+    "time": "19:17:15",
+    "ts": 1779716835055
+  },
+  {
+    "type": "admin",
+    "msg": "Admin cancelled booking for slot S47",
+    "time": "19:14:51",
+    "ts": 1779716691149
+  },
+  {
+    "type": "admin",
+    "msg": "Admin cancelled booking for slot S03",
+    "time": "19:14:42",
+    "ts": 1779716682435
+  },
+  {
+    "type": "admin",
+    "msg": "Admin cancelled booking for slot S04",
+    "time": "19:14:36",
+    "ts": 1779716676631
+  },
+  {
+    "type": "admin",
+    "msg": "Admin cancelled booking for slot S02",
+    "time": "19:14:30",
+    "ts": 1779716670824
+  },
+  {
+    "type": "admin",
+    "msg": "Admin cancelled booking for slot S01",
+    "time": "19:14:24",
+    "ts": 1779716664121
+  },
+  {
+    "type": "MATCH",
+    "msg": "TN 24 AW 0501 verified — S04 — 0h2m — ₹20 — rotated QR",
+    "time": "19:14:05",
+    "ts": 1779716645486
+  },
+  {
+    "type": "LOGIN",
+    "msg": "Admin signed in",
+    "time": "19:13:29",
+    "ts": 1779716609270
+  },
+  {
+    "type": "ENTRY",
+    "msg": "TN 24 AW 0501 → S04 checked in (vignesh s)",
+    "time": "19:11:59",
+    "ts": 1779716519062
+  },
+  {
+    "type": "LOGIN",
+    "msg": "vignesh s (@vignesh) signed in",
+    "time": "19:11:50",
+    "ts": 1779716510967
+  },
+  {
+    "type": "ENTRY",
+    "msg": "TN 24 AW 0501 → S03 checked in (vignesh s)",
+    "time": "19:05:22",
+    "ts": 1779716122320
+  },
+  {
+    "type": "LOGIN",
+    "msg": "vignesh s (@vignesh) signed in",
+    "time": "19:05:12",
+    "ts": 1779716112423
+  },
+  {
+    "type": "ENTRY",
+    "msg": "TN 24 AW 0501 → S02 checked in (vignesh s)",
+    "time": "18:02:22",
+    "ts": 1779712342123
+  },
+  {
+    "type": "ENTRY",
+    "msg": "TN 24 AW0561 → S01 checked in (vignesh s)",
+    "time": "17:56:30",
+    "ts": 1779711990665
+  },
+  {
+    "type": "LOGIN",
+    "msg": "vignesh s (@vignesh) signed in",
+    "time": "17:56:09",
+    "ts": 1779711969669
+  },
+  {
+    "type": "REG",
+    "msg": "New user: vignesh s (@vignesh, vigneshgcse2427@ksrce.ac.in)",
+    "time": "17:55:46",
+    "ts": 1779711946017
+  },
+  {
+    "type": "ENTRY",
+    "msg": "TN 24 AW1234 → S47 checked in (nithish rp)",
+    "time": "15:47:13",
+    "ts": 1777025833160
+  },
+  {
+    "type": "REG",
+    "msg": "New user: nithish rp (@fdvfdf, nithish123@gamil.com)",
+    "time": "15:46:55",
+    "ts": 1777025815148
+  },
+  {
+    "type": "LOGIN",
+    "msg": "Admin signed in",
+    "time": "17:18:30",
+    "ts": 1775476110204
+  },
+  {
+    "type": "LOGIN",
+    "msg": "yeswanth m (@yeswanth) signed in",
+    "time": "10:27:33",
+    "ts": 1775451453800
+  },
+  {
+    "type": "admin",
+    "msg": "Admin cancelled booking for slot S53",
+    "time": "17:28:52",
+    "ts": 1775390332265
+  },
+  {
+    "type": "admin",
+    "msg": "Admin cancelled booking for slot S50",
+    "time": "17:28:33",
+    "ts": 1775390313058
+  },
+  {
+    "type": "admin",
+    "msg": "Admin cancelled booking for slot S51",
+    "time": "17:28:10",
+    "ts": 1775390290305
+  },
+  {
+    "type": "admin",
+    "msg": "Admin cancelled booking for slot S03",
+    "time": "17:27:58",
+    "ts": 1775390278375
+  },
+  {
+    "type": "LOGIN",
+    "msg": "Admin signed in",
+    "time": "17:27:40",
+    "ts": 1775390260978
+  },
+  {
+    "type": "ENTRY",
+    "msg": "TN 24 AW1234 → S03 checked in (yeswanth m)",
+    "time": "17:27:05",
+    "ts": 1775390225719
+  },
+  {
+    "type": "LOGIN",
+    "msg": "yeswanth m (@yeswanth) signed in",
+    "time": "17:26:53",
+    "ts": 1775390213837
+  },
+  {
+    "type": "admin",
+    "msg": "Admin cancelled booking for slot S03",
+    "time": "16:16:07",
+    "ts": 1775126767441
+  },
+  {
+    "type": "admin",
+    "msg": "Admin cancelled booking for slot S01",
+    "time": "16:16:00",
+    "ts": 1775126760029
+  },
+  {
+    "type": "LOGIN",
+    "msg": "Admin signed in",
+    "time": "16:15:41",
+    "ts": 1775126741487
+  },
+  {
+    "type": "ENTRY",
+    "msg": "TN 24 AW1234 → S01 checked in (yeswanth m)",
+    "time": "16:15:09",
+    "ts": 1775126709599
+  },
+  {
+    "type": "ENTRY",
+    "msg": "TN 24 AW1234 → S03 checked in (yeswanth m)",
+    "time": "16:14:53",
+    "ts": 1775126693477
+  },
+  {
+    "type": "LOGIN",
+    "msg": "yeswanth m (@yeswanth) signed in",
+    "time": "16:14:42",
+    "ts": 1775126682492
+  },
+  {
+    "type": "LOGIN",
+    "msg": "Admin signed in",
+    "time": "16:06:52",
+    "ts": 1775126212793
+  },
+  {
+    "type": "LOGIN",
+    "msg": "yeswanth m (@yeswanth) signed in",
+    "time": "16:06:41",
+    "ts": 1775126201439
+  },
+  {
+    "type": "LOGIN",
+    "msg": "Admin signed in",
+    "time": "16:05:39",
+    "ts": 1775126139131
+  },
+  {
+    "type": "admin",
+    "msg": "Admin cancelled booking for slot S03",
+    "time": "16:03:58",
+    "ts": 1775126038670
+  },
+  {
+    "type": "LOGIN",
+    "msg": "Admin signed in",
+    "time": "15:55:47",
+    "ts": 1775125547174
+  },
+  {
+    "type": "ENTRY",
+    "msg": "TN 24 AW1234 → S03 checked in (yeswanth m)",
+    "time": "15:54:30",
+    "ts": 1775125470877
+  },
+  {
+    "type": "LOGIN",
+    "msg": "yeswanth m (@yeswanth) signed in",
+    "time": "15:54:15",
+    "ts": 1775125455057
+  },
+  {
+    "type": "LOGIN",
+    "msg": "Admin signed in",
+    "time": "15:47:10",
+    "ts": 1775125030169
+  },
+  {
+    "type": "LOGIN",
+    "msg": "Admin signed in",
+    "time": "15:40:48",
+    "ts": 1775124648957
+  },
+  {
+    "type": "LOGIN",
+    "msg": "Admin signed in",
+    "time": "15:36:05",
+    "ts": 1775124365782
+  },
+  {
+    "type": "LOGIN",
+    "msg": "Admin signed in",
+    "time": "15:36:04",
+    "ts": 1775124364924
+  },
+  {
+    "type": "ENTRY",
+    "msg": "TN 24 AW1234 → S53 checked in (yeswanth m)",
+    "time": "15:35:26",
+    "ts": 1775124326104
+  },
+  {
+    "type": "LOGIN",
+    "msg": "yeswanth m (@yeswanth) signed in",
+    "time": "15:35:04",
+    "ts": 1775124304009
+  },
+  {
+    "type": "LOGIN",
+    "msg": "yeswanth m (@yeswanth) signed in",
+    "time": "15:35:02",
+    "ts": 1775124302898
+  },
+  {
+    "type": "LOGIN",
+    "msg": "yeswanth m (@yeswanth) signed in",
+    "time": "11:44:35",
+    "ts": 1775110475079
+  },
+  {
+    "type": "ENTRY",
+    "msg": "TN24 AW0561 → S51 checked in (yeswanth m)",
+    "time": "22:04:43",
+    "ts": 1774456483891
+  },
+  {
+    "type": "LOGIN",
+    "msg": "yeswanth m (@yeswanth) signed in",
+    "time": "22:04:37",
+    "ts": 1774456477461
+  },
+  {
+    "type": "MATCH",
+    "msg": "TN24 AW0561 verified — S50 — 0h0m — ₹20",
+    "time": "21:42:41",
+    "ts": 1774455161314
+  },
+  {
+    "type": "LOGIN",
+    "msg": "Admin signed in",
+    "time": "21:42:37",
+    "ts": 1774455157569
+  },
+  {
+    "type": "ENTRY",
+    "msg": "TN24 AW0561 → S50 checked in (yeswanth m)",
+    "time": "21:41:48",
+    "ts": 1774455108920
+  },
+  {
+    "type": "LOGIN",
+    "msg": "yeswanth m (@yeswanth) signed in",
+    "time": "21:41:43",
+    "ts": 1774455103456
+  },
+  {
+    "type": "REG",
+    "msg": "New user: yeswanth m (@yeswanth, yyeswanth457@gmail.com)",
+    "time": "21:41:33",
+    "ts": 1774455093842
+  },
+  {
+    "type": "LOGIN",
+    "msg": "Admin signed in",
+    "time": "21:40:32",
+    "ts": 1774455032204
+  },
+  {
+    "type": "LOGIN",
+    "msg": "Admin signed in",
+    "time": "21:37:20",
+    "ts": 1774368440746
+  },
+  {
+    "type": "FAIL",
+    "msg": "Unknown QR scanned",
+    "time": "10:12:07",
+    "ts": 1774240927771
+  },
+  {
+    "type": "EXIT",
+    "msg": "TN24 AW0561 checked out — S50 freed — 143h46m — ₹14377",
+    "time": "09:59:49",
+    "ts": 1774240189380
+  },
+  {
+    "type": "MATCH",
+    "msg": "TN24 AW0561 verified — S50 — 143h46m — ₹14377",
+    "time": "09:59:46",
+    "ts": 1774240186280
+  },
+  {
+    "type": "EXIT",
+    "msg": "TN24 AW0561 checked out — S51 freed — 0h0m — ₹20",
+    "time": "09:59:40",
+    "ts": 1774240180755
+  },
+  {
+    "type": "MATCH",
+    "msg": "TN24 AW0561 verified — S51 — 0h0m — ₹20",
+    "time": "09:59:38",
+    "ts": 1774240178723
+  },
+  {
+    "type": "ENTRY",
+    "msg": "TN24 AW0561 → S51 checked in (vignesh g)",
+    "time": "09:59:28",
+    "ts": 1774240168742
+  },
+  {
+    "type": "LOGIN",
+    "msg": "Admin signed in",
+    "time": "09:59:07",
+    "ts": 1774240147284
+  },
+  {
+    "type": "LOGIN",
+    "msg": "Admin signed in",
+    "time": "09:58:20",
+    "ts": 1774240100305
+  },
+  {
+    "type": "LOGIN",
+    "msg": "Admin signed in",
+    "time": "09:57:25",
+    "ts": 1774240045088
+  },
+  {
+    "type": "EXIT",
+    "msg": "TN24 AW0561 checked out — S51 freed — 0h0m — ₹20",
+    "time": "10:14:08",
+    "ts": 1773722649012
+  },
+  {
+    "type": "MATCH",
+    "msg": "TN24 AW0561 verified — S51 — 0h0m — ₹20",
+    "time": "10:14:00",
+    "ts": 1773722640407
+  },
+  {
+    "type": "LOGIN",
+    "msg": "Admin signed in",
+    "time": "10:13:46",
+    "ts": 1773722626376
+  },
+  {
+    "type": "ENTRY",
+    "msg": "TN24 AW0561 → S51 checked in (vignesh g)",
+    "time": "10:13:24",
+    "ts": 1773722604303
+  },
+  {
+    "type": "ENTRY",
+    "msg": "TN24 AW0561 → S50 checked in (vignesh g)",
+    "time": "10:12:55",
+    "ts": 1773722575695
+  },
+  {
+    "type": "LOGIN",
+    "msg": "vignesh g (@vicky) signed in",
+    "time": "10:12:39",
+    "ts": 1773722559547
+  },
+  {
+    "type": "REG",
+    "msg": "New user: vignesh g (@vicky, vicky345@gmail.com)",
+    "time": "10:12:29",
+    "ts": 1773722549927
+  },
+  {
+    "type": "LOGIN",
+    "msg": "Admin signed in",
+    "time": "10:11:00",
+    "ts": 1773722460419
+  },
+  {
+    "type": "LOGIN",
+    "msg": "Admin signed in",
+    "time": "10:11:00",
+    "ts": 1773722460407
+  }
+]
